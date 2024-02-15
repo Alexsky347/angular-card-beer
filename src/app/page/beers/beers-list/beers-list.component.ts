@@ -30,11 +30,9 @@ import { PaginationComponent } from '../../../shared/ui/pagination/pagination.co
 export class BeersListComponent implements OnInit {
   private beersApiService = inject(BeersApiService);
   beers$: Observable<BeerCollection> | undefined = undefined;
-  private food: string | undefined = undefined;
   isHidden = false;
 
   searchBeersByFood(food: string) {
-    this.food = food;
     this.beers$ = this.beersApiService.findByFood(food).pipe(
       catchError((error) => {
         console.error('Error fetching beers', error);
