@@ -29,7 +29,7 @@ export class BeersApiService {
     });
   }
 
-  findBeerByFood(food: string): Observable<BeerCollection> {
+  findByFood(food: string): Observable<BeerCollection> {
     return this.httpClient.get<BeerCollection>(this._url, {
       params: {
         food: food

@@ -29,7 +29,7 @@ export class BeersListComponent implements OnInit {
 
   searchBeersByFood(food: string) {
     this.food = food;
-    this.beers$ = this.beersApiService.findBeerByFood(food).pipe(
+    this.beers$ = this.beersApiService.findByFood(food).pipe(
       catchError((error) => {
         console.error('Error fetching beers', error);
         return [];

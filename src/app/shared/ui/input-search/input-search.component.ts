@@ -1,35 +1,24 @@
-import {
-  Component,
-  EventEmitter,
-  OnDestroy,
-  OnInit,
-  Output
-} from '@angular/core';
-import { Subject } from 'rxjs';
-import { debounceTime } from 'rxjs/operators';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 @Component({
   selector: 'app-input-search',
   standalone: true,
-  imports: [],
+  imports: [ReactiveFormsModule],
+  providers: [],
   templateUrl: './input-search.component.html',
   styleUrl: './input-search.component.scss'
 })
-export class InputSearchComponent implements OnInit, OnDestroy {
+export class InputSearchComponent implements OnInit {
+  search = new FormControl('', { nonNullable: true });
   @Output() searchChange: EventEmitter<string> = new EventEmitter<string>();
-  private searchInputSubject: Subject<string> = new Subject<string>();
 
   ngOnInit(): void {
-    this.searchInputSubject.pipe(debounceTime(500)).subscribe((newValue) => {
-      this.searchChange.emit(newValue);
-    });
-  }
-  ngOnDestroy(): void {
-    this.searchInputSubject.unsubscribe();
-  }
-
-  onInputSearchChange(event: Event) {
-    const newValue = (event.target as HTMLInputElement).value;
-    this.searchInputSubject.next(newValue);
+    this.search.valueChanges
+      .pipe(debounceTime(500), distinctUntilChanged())
+      .subscribe((newValue) => {
+        this.searchChange.emit(newValue);
+      });
   }
 }
