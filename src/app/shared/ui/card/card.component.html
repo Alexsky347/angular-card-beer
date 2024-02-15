@@ -1,0 +1,23 @@
+<div
+  style="height: 350px"
+  class="max-w-sm rounded overflow-hidden shadow-lg w-90 h-90 flex flex-col m-2">
+  <img
+    src="{{beer.image_url}}"
+    class="h-48 object-contain"
+    alt="Sunset in the mountains" />
+  <div class="px-6 py-4">
+    <div class="font-bold text-xl mb-2">{{beer.name}}</div>
+    <p appEllipsis appTooltip class="text-gray-700">{{beer.description}}</p>
+  </div>
+  <div class="px-6 pt-4 pb-2 flex flex-row justify-center">
+    <button
+      (click)="toDetails()"
+      class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+      <img src="assets/icons/eye.svg" alt="more details" />
+    </button>
+    <button
+      class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+      <img src="assets/icons/plus-circle.svg" alt="add to basket" />
+    </button>
+  </div>
+</div>
