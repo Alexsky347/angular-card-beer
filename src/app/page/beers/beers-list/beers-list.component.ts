@@ -1,8 +1,13 @@
-import { Component, OnInit, inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  OnInit,
+  inject
+} from '@angular/core';
 import { BeersApiService } from '../../../core/services/beers-api.service';
 import { BeerCollection } from '../../../core/models/interfaces/beer';
 import { LayoutComponent } from '../../../shared/ui/layout/layout.component';
-import { Observable, catchError, tap } from 'rxjs';
+import { Observable, catchError } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
 import { CardComponent } from '../../../shared/ui/card/card.component';
 import { InputSearchComponent } from '../../../shared/ui/input-search/input-search.component';
@@ -10,6 +15,7 @@ import { PaginationComponent } from '../../../shared/ui/pagination/pagination.co
 
 @Component({
   selector: 'app-beers-list',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   imports: [
     LayoutComponent,

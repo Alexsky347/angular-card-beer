@@ -24,15 +24,6 @@ export class AppComponent {
   public onViewportScroll(event: Event) {
     console.log(event);
     this.isHidden = true;
-
-    // const windowHeight = window.innerHeight;
-    // const lastScrollTop = windowHeight;
-    // const scrollTopPosition = document.documentElement.scrollTop;
-
-    // if (scrollTopPosition > lastScrollTop) {
-    //   console.log('scrolling down');
-    // } else if (scrollTopPosition < lastScrollTop) {
-    //   console.log('scrolling up');
-    // }
+    //TODO to implements: scroll up appears, down disappears
   }
 }
