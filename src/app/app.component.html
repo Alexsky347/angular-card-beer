@@ -1,4 +1,9 @@
 <app-header [hidden]="isHidden" />
-<div id="content">
-  <router-outlet></router-outlet>
-</div>
+<main>
+  <div id="sidenav">
+    <app-sidenav [hidden]="isHidden" />
+  </div>
+  <div id="content" class="bg-gray-50">
+    <router-outlet></router-outlet>
+  </div>
+</main>
