@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -7,4 +7,7 @@ import { Component } from '@angular/core';
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
-export class HeaderComponent {}
+export class HeaderComponent {
+  @Input({ required: true }) isOpen!: boolean;
+  @Output() toggleSidenav = new EventEmitter<boolean>();
+}

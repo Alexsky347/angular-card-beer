@@ -1,9 +1,12 @@
-<app-header [hidden]="isHidden" />
+<app-header
+  [isOpen]="isSideNavOpen"
+  [hidden]="isHidden"
+  (toggleSidenav)="handleToggleSidenav($event)" />
 <main>
   <div id="sidenav">
-    <app-sidenav [hidden]="isHidden" />
+    <app-sidenav [isOpen]="isSideNavOpen" [hidden]="isHidden" />
   </div>
-  <div id="content" class="bg-gray-50">
+  <div id="content" class="backdrop-blur">
     <router-outlet></router-outlet>
   </div>
 </main>

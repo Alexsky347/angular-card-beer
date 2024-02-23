@@ -1,7 +1,6 @@
-<nav
-  class="fixed top-0 w-full bg-white shadow-lg h-20 border-b border-gray-200 z-10">
+<nav class="top-0 w-full bg-white shadow-lg h-20 border-b border-gray-200 z-50">
   <div class="p-6">
-    <button>
+    <button (click)="toggleSidenav.emit(!isOpen)">
       <img src="assets/icons/menu.svg" alt="menu icon" />
     </button>
     <div class="flex items-center justify-between"></div>

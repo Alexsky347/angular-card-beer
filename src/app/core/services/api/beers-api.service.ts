@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Beer, BeerCollection } from '../models/interfaces/beer';
-import { BACKEND_URL } from '../../app.config';
+import { Beer, BeerCollection } from '../../models/interfaces/beer';
+import { BACKEND_URL } from '../../../app.config';
 
 @Injectable({
   providedIn: 'root'

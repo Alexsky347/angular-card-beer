@@ -2,13 +2,39 @@
   <div class="flex justify-center p-10">
     <app-input-search (searchChange)="handleSearchChange($event)" />
   </div>
-
-  <div
-    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6">
-    @for (beerData of beers$ | async ; track $index) {
-    <app-card [beer]="beerData" />
-    }
+  <div class="w-32 m-5">
+    <label
+      for="mode"
+      class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400"
+      >Display Mode</label
+    >
+    <select
+      id="mode"
+      select
+      [(ngModel)]="mode"
+      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+      @for(item of modeOptions; track $index){
+      <option [ngValue]="item.mode">{{item.mode}}</option>
+      }
+    </select>
   </div>
+
+  <ng-template let-items #cardTemplate>
+    <div
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6">
+      @for (beerData of items ; track $index) {
+      <app-card [beer]="beerData" />
+      }
+    </div>
+  </ng-template>
+
+  <ng-template let-items #listTemplate>
+    <div class="p-7">
+      <app-list [items]="items" />
+    </div>
+  </ng-template>
+
+  <app-item-view [itemTemplate]="template" [items]="beers$ | async" />
   <div id="pagination">
     <app-pagination [hidden]="isHidden" />
   </div>

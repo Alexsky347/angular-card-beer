@@ -1,0 +1,17 @@
+pipe
+directive -> ok
+
+@ContentChild()
+
+ng-template ngTemplateOutlet (progress bar) -> ok
+
+@HostBinding()
+css (par exemple champ requis)
+
+remove detection OnPush
+
+rxjs operators
+
+
+css list 
+

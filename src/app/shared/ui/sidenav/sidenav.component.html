@@ -1,7 +1,11 @@
-<nav class="bg-white h-full left-0 absolute w-20 shadow-xl">
+<nav
+  class="bg-white h-full left-0 absolute shadow-xl z-50"
+  [ngStyle]="{'width':isOpen ? widthOpened + 'px': widthClosed +'px'}">
   <div class="flex flex-col">
     <div class="divide-y">
-      <a [routerLink]="['/home']" class="flex justify-center p-5">
+      <a
+        [routerLink]="['/home']"
+        [className]="isOpen ? 'flex space-x-10 pl-5 pt-5 pb-5': 'flex justify-center p-5'">
         <svg
           width="30px"
           height="30px"
@@ -17,9 +21,11 @@
             stroke-linecap="round"
             stroke-linejoin="round"></path>
         </svg>
-        <span class="hidden">Home</span>
+        <span class="text-xl" [hidden]="!isOpen">Home</span>
       </a>
-      <a href="" class="flex justify-center p-5">
+      <a
+        href=""
+        [className]="isOpen ? 'flex space-x-10 pl-5 pt-5 pb-5': 'flex justify-center p-5'">
         <svg
           width="30px"
           height="30px"
@@ -47,10 +53,12 @@
             stroke-linecap="round"
             stroke-linejoin="round"></path>
         </svg>
-        <span class="hidden">Beers</span>
+        <span class="text-xl" [hidden]="!isOpen">Beers</span>
       </a>
     </div>
-    <a href="" class="flex justify-center p-5">
+    <a
+      href=""
+      [className]="isOpen ? 'flex space-x-10 pl-5 pt-5 pb-5': 'flex justify-center p-5'">
       <svg
         width="30px"
         height="30px"
@@ -76,10 +84,12 @@
           stroke="#000000"
           stroke-width="1.5"></path>
       </svg>
-      <span class="hidden">Info</span>
+      <span class="text-xl" [hidden]="!isOpen">Info</span>
     </a>
     <div class="absolute bottom-5">
-      <a href="" class="flex justify-center p-5">
+      <a
+        href=""
+        [className]="isOpen ? 'flex space-x-10 pl-5 pt-5 pb-5': 'flex justify-center p-5'">
         <svg
           width="30px"
           height="30px"
@@ -107,9 +117,11 @@
             stroke-linecap="round"
             stroke-linejoin="round"></path>
         </svg>
-        <span class="hidden">Info</span>
+        <span class="text-xl" [hidden]="!isOpen">Info</span>
       </a>
-      <a href="" class="flex justify-center p-5">
+      <a
+        href=""
+        [className]="isOpen ? 'flex space-x-10 pl-5 pt-5 pb-5': 'flex justify-center p-5'">
         <svg
           width="30px"
           height="30px"
@@ -135,7 +147,7 @@
             stroke="#000000"
             stroke-width="1.5"></path>
         </svg>
-        <span class="hidden">Info</span>
+        <span class="text-xl" [hidden]="!isOpen">Info</span>
       </a>
     </div>
   </div>
