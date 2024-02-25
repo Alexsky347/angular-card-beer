@@ -17,6 +17,8 @@ export class BeersDetailsComponent {
   beerData$: Observable<Beer> = new Observable<Beer>();
   constructor(route: ActivatedRoute) {
     // const id = route.snapshot.paramMap.get('beerId')!;
-    this.beerData$ = route.paramMap.pipe(map(() => window.history.state));
+    this.beerData$ = route.paramMap.pipe(
+      map(() => window.history.state as Beer)
+    );
   }
 }

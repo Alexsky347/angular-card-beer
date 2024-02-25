@@ -4,7 +4,8 @@ import {
   OnInit,
   inject,
   TemplateRef,
-  ViewChild
+  ViewChild,
+  HostListener
 } from '@angular/core';
 import { BeersApiService } from '../../../core/services/api/beers-api.service';
 import { BeerCollection } from '../../../core/models/interfaces/beer';
@@ -46,12 +47,12 @@ export class BeersListComponent implements OnInit {
   @ViewChild('cardTemplate') cardTemplate!: TemplateRef<HTMLElement>;
   @ViewChild('listTemplate') listTemplate!: TemplateRef<HTMLElement>;
 
-  get template() {
-    if (this.mode == 'list') return this.listTemplate;
+  get template(): TemplateRef<HTMLElement> {
+    if (this.mode === 'list') return this.listTemplate;
     return this.cardTemplate;
   }
 
-  searchBeersByFood(food: string) {
+  searchBeersByFood(food: string): void {
     this.beers$ = this.beersApiService.findByFood(food).pipe(
       catchError((error) => {
         console.error('Error fetching beers', error);
@@ -60,7 +61,7 @@ export class BeersListComponent implements OnInit {
     );
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.beers$ = this.beersApiService.findAll().pipe(
       catchError((error) => {
         console.error('Error fetching beers', error);
@@ -73,11 +74,27 @@ export class BeersListComponent implements OnInit {
    *
    * @param food @example 'Cheesecake or steak'
    */
-  handleSearchChange(food: string) {
+  handleSearchChange(food: string): void {
     if (!food) {
       this.beers$ = this.beersApiService.findAll();
       return;
     }
     this.searchBeersByFood(food);
+  }
+
+  @HostListener('document:scroll', ['$event'])
+  public onViewportScroll(event: Event): void {
+    console.log(event);
+    console.log(window.scrollY);
+    console.log(window.innerHeight);
+    console.log(self.innerHeight);
+    // will log the height of the frame viewport within the frameset
+
+    console.log(parent.innerHeight);
+    console.log(window.outerHeight);
+    // will log the height of the viewport of the closest frameset
+
+    // this.isHidden = true;
+    //TODO to implements: scroll up appears, down disappears
   }
 }

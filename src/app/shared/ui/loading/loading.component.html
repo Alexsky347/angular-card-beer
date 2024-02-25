@@ -1,1 +1,5 @@
-<ng-container *ngTemplateOutlet="customTemplate"> </ng-container>
+@if(loader.isLoading$ | async){
+<div class="loading-overlay">
+  <p>Loading ...</p>
+</div>
+}

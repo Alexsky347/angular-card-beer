@@ -7,8 +7,8 @@ import { Directive, ElementRef, HostListener } from '@angular/core';
 export class TooltipDirective {
   div: HTMLDivElement = document.createElement('div');
 
-  constructor(private el: ElementRef) {}
-  @HostListener('mouseenter') onMouseEnter() {
+  constructor(private el: ElementRef<HTMLElement>) {}
+  @HostListener('mouseenter') onMouseEnter(): void {
     const text = this.el.nativeElement.innerHTML;
 
     this.div.innerHTML = `<span>${text}</span>`;
@@ -26,7 +26,7 @@ export class TooltipDirective {
     this.el.nativeElement.appendChild(this.div);
   }
 
-  @HostListener('mouseleave') onMouseLeave() {
+  @HostListener('mouseleave') onMouseLeave(): void {
     this.el.nativeElement.removeChild(this.div);
   }
 }

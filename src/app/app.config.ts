@@ -1,13 +1,29 @@
-import { ApplicationConfig, InjectionToken } from '@angular/core';
-import { provideRouter, withComponentInputBinding } from '@angular/router';
+import {
+  ApplicationConfig,
+  InjectionToken,
+  importProvidersFrom
+} from '@angular/core';
+import {
+  provideRouter,
+  withComponentInputBinding,
+  withViewTransitions
+} from '@angular/router';
 
 import { routes } from './app.routes';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { provideHttpClient, withFetch } from '@angular/common/http';
+import {
+  HttpClientModule,
+  provideHttpClient,
+  withFetch,
+  withInterceptors
+} from '@angular/common/http';
+import { loaderInterceptor } from './core/services/interceptors/loader.interceptor';
 export const BACKEND_URL = new InjectionToken<string>('API URL');
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideRouter(routes),
+    provideRouter(routes, withViewTransitions(), withComponentInputBinding()),
+    importProvidersFrom(HttpClientModule),
+    provideHttpClient(withInterceptors([loaderInterceptor])),
     provideAnimationsAsync(),
     provideHttpClient(withFetch()),
     { provide: BACKEND_URL, useValue: 'https://api.punkapi.com/v2/beers' }

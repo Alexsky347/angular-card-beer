@@ -5,7 +5,7 @@ import { Directive, ElementRef } from '@angular/core';
   standalone: true
 })
 export class EllipsisDirective {
-  constructor(private el: ElementRef) {
+  constructor(private el: ElementRef<HTMLElement>) {
     this.el.nativeElement.style.textOverflow = 'ellipsis';
     this.el.nativeElement.style.overflow = 'hidden';
     this.el.nativeElement.style.whiteSpace = 'nowrap';

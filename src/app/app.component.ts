@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Meta } from '@angular/platform-browser';
 import { HeaderComponent } from './shared/ui/header/header.component';
@@ -16,6 +16,7 @@ import { LoadingComponent } from './shared/ui/loading/loading.component';
     PaginationComponent,
     SidenavComponent,
     NgTemplateOutlet,
+    LoadingComponent,
     LoadingComponent
   ],
   templateUrl: './app.component.html',
@@ -31,16 +32,9 @@ export class AppComponent {
 
   @ViewChild('header') content!: ElementRef;
 
-  handleToggleSidenav(event: boolean) {
+  handleToggleSidenav(event: boolean): void {
     console.log('handleToggleSidenav', event);
     console.log(this.isSideNavOpen);
     this.isSideNavOpen = !this.isSideNavOpen;
-  }
-
-  @HostListener('document:scroll', ['$event'])
-  public onViewportScroll(event: Event) {
-    console.log(event);
-    // this.isHidden = true;
-    //TODO to implements: scroll up appears, down disappears
   }
 }

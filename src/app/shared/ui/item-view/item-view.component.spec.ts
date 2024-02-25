@@ -9,9 +9,8 @@ describe('ItemViewComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [ItemViewComponent]
-    })
-    .compileComponents();
-    
+    }).compileComponents();
+
     fixture = TestBed.createComponent(ItemViewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

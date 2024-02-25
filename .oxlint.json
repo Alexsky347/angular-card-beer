@@ -1,0 +1,19 @@
+{
+  "rules": {
+    "unicorn/better-regex": "error",
+    "eqeqeq": ["error", "always", { "null": "ignore" }],
+    "no-unused-vars": ["error", { "vars": "all", "args": "after-used", "ignoreRestSiblings": false }],
+    "eslint: recommended": ["error", "always"],
+    "plugin:@typescript-eslint/recommended": ["error", "always"],
+    "plugin:@angular-eslint/template/process-inline-templates": [
+      "error",
+      "always"
+    ],
+    "plugin:prettier/recommended": [
+      "error",
+      {
+        "singleQuote": true
+      }
+    ]
+  }
+}

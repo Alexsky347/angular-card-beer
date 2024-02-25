@@ -9,9 +9,18 @@
   <tbody>
     @for(item of items; track $index){
     <tr>
-      @for(header of headers ; track $index){
+      @for(header of headers ; track $index){ @if(header === 'image_url'){
+      <td>
+        <img
+          [ngSrc]="item[header]"
+          priority
+          [width]="20"
+          [height]="20"
+          alt="beer image" />
+      </td>
+      } @else {
       <td>{{item | getBeerProperty : header}}</td>
-      }
+      } }
     </tr>
     }
   </tbody>
