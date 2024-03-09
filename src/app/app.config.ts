@@ -18,6 +18,7 @@ import {
   withInterceptors
 } from '@angular/common/http';
 import { loaderInterceptor } from './core/services/interceptors/loader.interceptor';
+import { PRECONNECT_CHECK_BLOCKLIST } from '@angular/common';
 export const BACKEND_URL = new InjectionToken<string>('API URL');
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -26,6 +27,7 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(withInterceptors([loaderInterceptor])),
     provideAnimationsAsync(),
     provideHttpClient(withFetch()),
-    { provide: BACKEND_URL, useValue: 'https://api.punkapi.com/v2/beers' }
+    { provide: BACKEND_URL, useValue: 'https://api.punkapi.com/v2/beers' },
+    {provide: PRECONNECT_CHECK_BLOCKLIST, useValue: 'https://images.punkapi.com'}
   ]
 };

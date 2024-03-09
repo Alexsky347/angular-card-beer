@@ -1,8 +1,32 @@
 <nav
-  class="bg-white h-full left-0 absolute shadow-xl z-50"
-  [ngStyle]="{'width':isOpen ? widthOpened + 'px': widthClosed +'px'}">
+  class="bg-surface dark:bg-darkSurface h-full top-0 left-0 fixed shadow-xl z-50"
+  [@widthGrow]="isOpen">
   <div class="flex flex-col">
     <div class="divide-y">
+      <div class="h-20 shadow-lg">
+        <button
+          [@closeBtn]="isOpen"
+          (click)="toggleCloseBtn.emit(!isOpen)"
+          class="absolute top-[25px] right-[25px]">
+          <svg
+            width="30px"
+            height="30px"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M14.5 9.50002L9.5 14.5M9.49998 9.5L14.5 14.5"
+              stroke="#1C274C"
+              stroke-width="1.5"
+              stroke-linecap="round" />
+            <path
+              d="M7 3.33782C8.47087 2.48697 10.1786 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 10.1786 2.48697 8.47087 3.33782 7"
+              stroke="#1C274C"
+              stroke-width="1.5"
+              stroke-linecap="round" />
+          </svg>
+        </button>
+      </div>
       <a
         [routerLink]="['/home']"
         [className]="isOpen ? 'flex space-x-10 pl-5 pt-5 pb-5': 'flex justify-center p-5'">
@@ -23,39 +47,39 @@
         </svg>
         <span class="text-xl" [hidden]="!isOpen">Home</span>
       </a>
-      <a
-        href=""
-        [className]="isOpen ? 'flex space-x-10 pl-5 pt-5 pb-5': 'flex justify-center p-5'">
-        <svg
-          width="30px"
-          height="30px"
-          stroke-width="1.5"
-          viewBox="0 0 24 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          color="#000000">
-          <path
-            d="M12 8L12 12"
-            stroke="#000000"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"></path>
-          <path
-            d="M12 16.01L12.01 15.9989"
-            stroke="#000000"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"></path>
-          <path
-            d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 13.8214 2.48697 15.5291 3.33782 17L2.5 21.5L7 20.6622C8.47087 21.513 10.1786 22 12 22Z"
-            stroke="#000000"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"></path>
-        </svg>
-        <span class="text-xl" [hidden]="!isOpen">Beers</span>
-      </a>
     </div>
+    <a
+      href=""
+      [className]="isOpen ? 'flex space-x-10 pl-5 pt-5 pb-5': 'flex justify-center p-5'">
+      <svg
+        width="30px"
+        height="30px"
+        stroke-width="1.5"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        color="#000000">
+        <path
+          d="M12 8L12 12"
+          stroke="#000000"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"></path>
+        <path
+          d="M12 16.01L12.01 15.9989"
+          stroke="#000000"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"></path>
+        <path
+          d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 13.8214 2.48697 15.5291 3.33782 17L2.5 21.5L7 20.6622C8.47087 21.513 10.1786 22 12 22Z"
+          stroke="#000000"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"></path>
+      </svg>
+      <span class="text-xl" [hidden]="!isOpen">Beers</span>
+    </a>
     <a
       href=""
       [className]="isOpen ? 'flex space-x-10 pl-5 pt-5 pb-5': 'flex justify-center p-5'">

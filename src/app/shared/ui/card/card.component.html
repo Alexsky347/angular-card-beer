@@ -1,14 +1,13 @@
 <div
-  style="height: 350px"
-  class="max-w-sm rounded overflow-hidden shadow-lg w-90 h-90 flex flex-col m-2 bg-white">
+  class="h-[350px] p-4 max-w-sm rounded overflow-hidden shadow-lg flex flex-col m-2 bg-surface dark:bg-darkSurface place-content-between">
   <div class="flex justify-center">
     <img
-      [ngSrc]="beer.image_url"
+      [ngSrc]="beer.image_url ? beer.image_url : 'assets/images/placeholder.png'"
       [width]="48"
       [height]="48"
       priority
-      class="h-48 object-contain"
-      alt="Sunset in the mountains" />
+      class="object-contain"
+      alt="Beer picture" />
   </div>
   <div class="px-6 py-4">
     <div appEllipsis class="font-bold text-xl mb-2">{{beer.name}}</div>

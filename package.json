@@ -23,6 +23,7 @@
     "@angular/router": "^17.1.0",
     "@ng-icons/radix-icons": "^26.5.0",
     "feather-icons": "^4.29.1",
+    "pnpm": "^8.15.4",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"

@@ -1,5 +1,40 @@
-<div class="flex justify-center items-center m-auto">
-  @if (beerData$ | async; as beer ) {
-  <app-card [beer]="beer" />
-  }
+@if (beerData$ | async; as beer ) {
+<div class="bg-surface dark:bg-darkSurface py-8">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col md:flex-row -mx-4">
+      <div class="md:flex-1 px-4">
+        <div class="h-full w-full rounded-lg mb-4">
+          <img
+            [ngSrc]="beer.image_url ? beer.image_url : 'assets/images/placeholder.png'"
+            [width]="96"
+            [height]="96"
+            priority
+            class="object-cover"
+            alt="Beer picture" />
+        </div>
+      </div>
+      <div class="md:flex-1 px-4 align-center">
+        <h2 class="text-2xl font-bold text-gray-800 dark:text-white mb-2">
+          {{beer.name}}
+        </h2>
+        <div class="flex mb-4">
+          <div class="mr-4">
+            <p class="font-bold text-gray-700">Food pairing</p>
+            <span class="text-gray-600">{{beer.food_pairing.join(', ')}}</span>
+          </div>
+        </div>
+        <div class="flex mb-4">
+          <div class="mr-4">
+            <p class="font-bold text-gray-700">First brewed</p>
+            <span class="text-gray-600">{{beer.first_brewed}}</span>
+          </div>
+        </div>
+        <div>
+          <p class="font-bold text-gray-700">Description</p>
+          <p class="text-gray-600 text-sm mt-2">{{ beer.description }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+}
