@@ -1,3 +1,11 @@
+export type DataFromApi = {
+  first: number;
+  items: number;
+  last: number;
+  next: number;
+  pages: number;
+  data: Array<Beer>;
+};
 export type BeerCollection = Array<Beer>;
 export interface Beer {
   id: number;
@@ -18,7 +26,7 @@ export interface Beer {
   boil_volume: Volume;
   method: Method;
   ingredients: Ingredients;
-  food_pairing: string[];
+  food_pairing: string;
   brewers_tips: string;
   contributed_by: string;
 }

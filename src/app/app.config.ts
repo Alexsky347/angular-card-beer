@@ -27,7 +27,10 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(withInterceptors([loaderInterceptor])),
     provideAnimationsAsync(),
     provideHttpClient(withFetch()),
-    { provide: BACKEND_URL, useValue: 'https://api.punkapi.com/v2/beers' },
-    {provide: PRECONNECT_CHECK_BLOCKLIST, useValue: 'https://images.punkapi.com'}
+    { provide: BACKEND_URL, useValue: 'http://localhost:3001/beers' },
+    {
+      provide: PRECONNECT_CHECK_BLOCKLIST,
+      useValue: 'https://images.punkapi.com'
+    }
   ]
 };

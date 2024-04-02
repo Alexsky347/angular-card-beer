@@ -1,7 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable, inject } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Beer, BeerCollection } from '../../models/interfaces/beer';
+import { Observable, filter, map, tap } from 'rxjs';
+import {
+  Beer,
+  BeerCollection,
+  DataFromApi
+} from '../../models/interfaces/beer';
 import { BACKEND_URL } from '../../../app.config';
 
 @Injectable({
@@ -12,11 +16,11 @@ export class BeersApiService {
 
   constructor(@Inject(BACKEND_URL) private _url: string) {}
 
-  findAll(page = 1, perPage = 50): Observable<BeerCollection> {
-    return this.httpClient.get<BeerCollection>(this._url, {
+  findAll(page = 1, perPage = 50): Observable<DataFromApi> {
+    return this.httpClient.get<DataFromApi>(this._url, {
       params: {
-        page: page.toString(),
-        per_page: perPage.toString()
+        _page: page.toString(),
+        _per_page: perPage.toString()
       }
     });
   }
@@ -29,11 +33,20 @@ export class BeersApiService {
     });
   }
 
-  findByFood(food: string): Observable<BeerCollection> {
-    return this.httpClient.get<BeerCollection>(this._url, {
-      params: {
-        food: food
-      }
-    });
+  findByName(name: { name: string }): Observable<BeerCollection> {
+    // api doesn't handle ILIKE queries
+    // return this.httpClient.get<DataFromApi>(this._url, {
+    //   params: name
+    // });
+
+    return this.httpClient
+      .get<BeerCollection>(this._url)
+      .pipe(
+        map((beers) =>
+          beers.filter((beer) =>
+            beer.name.toLowerCase().includes(name.name.toLowerCase())
+          )
+        )
+      );
   }
 }

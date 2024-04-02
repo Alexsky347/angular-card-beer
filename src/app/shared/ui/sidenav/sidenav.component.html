@@ -8,169 +8,39 @@
           [@closeBtn]="isOpen"
           (click)="toggleCloseBtn.emit(!isOpen)"
           class="absolute top-[25px] right-[25px]">
-          <svg
-            width="30px"
-            height="30px"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="M14.5 9.50002L9.5 14.5M9.49998 9.5L14.5 14.5"
-              stroke="#1C274C"
-              stroke-width="1.5"
-              stroke-linecap="round" />
-            <path
-              d="M7 3.33782C8.47087 2.48697 10.1786 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 10.1786 2.48697 8.47087 3.33782 7"
-              stroke="#1C274C"
-              stroke-width="1.5"
-              stroke-linecap="round" />
-          </svg>
+          <span class="material-symbols-outlined mat-icon-30"> close </span>
         </button>
       </div>
       <a
         [routerLink]="['/home']"
         [className]="isOpen ? 'flex space-x-10 pl-5 pt-5 pb-5': 'flex justify-center p-5'">
-        <svg
-          width="30px"
-          height="30px"
-          stroke-width="1.5"
-          viewBox="0 0 24 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          color="#000000">
-          <path
-            d="M6 20H3V6L12 4L21 6V20H18M6 20H18M6 20V16M18 20V16M6 12V8L18 8V12M6 12L18 12M6 12V16M18 12V16M6 16H18"
-            stroke="#000000"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"></path>
-        </svg>
+        <span class="material-symbols-outlined mat-icon-30"> home </span>
         <span class="text-xl" [hidden]="!isOpen">Home</span>
       </a>
     </div>
     <a
       href=""
       [className]="isOpen ? 'flex space-x-10 pl-5 pt-5 pb-5': 'flex justify-center p-5'">
-      <svg
-        width="30px"
-        height="30px"
-        stroke-width="1.5"
-        viewBox="0 0 24 24"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        color="#000000">
-        <path
-          d="M12 8L12 12"
-          stroke="#000000"
-          stroke-width="1.5"
-          stroke-linecap="round"
-          stroke-linejoin="round"></path>
-        <path
-          d="M12 16.01L12.01 15.9989"
-          stroke="#000000"
-          stroke-width="1.5"
-          stroke-linecap="round"
-          stroke-linejoin="round"></path>
-        <path
-          d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 13.8214 2.48697 15.5291 3.33782 17L2.5 21.5L7 20.6622C8.47087 21.513 10.1786 22 12 22Z"
-          stroke="#000000"
-          stroke-width="1.5"
-          stroke-linecap="round"
-          stroke-linejoin="round"></path>
-      </svg>
+      <span class="material-symbols-outlined mat-icon-30"> sports_bar </span>
       <span class="text-xl" [hidden]="!isOpen">Beers</span>
     </a>
     <a
       href=""
       [className]="isOpen ? 'flex space-x-10 pl-5 pt-5 pb-5': 'flex justify-center p-5'">
-      <svg
-        width="30px"
-        height="30px"
-        stroke-width="1.5"
-        viewBox="0 0 24 24"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        color="#000000">
-        <path
-          d="M12 7V9"
-          stroke="#000000"
-          stroke-width="1.5"
-          stroke-linecap="round"
-          stroke-linejoin="round"></path>
-        <path
-          d="M12 13.01L12.01 12.9989"
-          stroke="#000000"
-          stroke-width="1.5"
-          stroke-linecap="round"
-          stroke-linejoin="round"></path>
-        <path
-          d="M3 20.2895V5C3 3.89543 3.89543 3 5 3H19C20.1046 3 21 3.89543 21 5V15C21 16.1046 20.1046 17 19 17H7.96125C7.35368 17 6.77906 17.2762 6.39951 17.7506L4.06852 20.6643C3.71421 21.1072 3 20.8567 3 20.2895Z"
-          stroke="#000000"
-          stroke-width="1.5"></path>
-      </svg>
+      <span class="material-symbols-outlined mat-icon-30">info</span>
       <span class="text-xl" [hidden]="!isOpen">Info</span>
     </a>
     <div class="absolute bottom-5">
       <a
         href=""
         [className]="isOpen ? 'flex space-x-10 pl-5 pt-5 pb-5': 'flex justify-center p-5'">
-        <svg
-          width="30px"
-          height="30px"
-          stroke-width="1.5"
-          viewBox="0 0 24 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          color="#000000">
-          <path
-            d="M12 8L12 12"
-            stroke="#000000"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"></path>
-          <path
-            d="M12 16.01L12.01 15.9989"
-            stroke="#000000"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"></path>
-          <path
-            d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 13.8214 2.48697 15.5291 3.33782 17L2.5 21.5L7 20.6622C8.47087 21.513 10.1786 22 12 22Z"
-            stroke="#000000"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"></path>
-        </svg>
+        <span class="material-symbols-outlined mat-icon-30">info</span>
         <span class="text-xl" [hidden]="!isOpen">Info</span>
       </a>
       <a
         href=""
         [className]="isOpen ? 'flex space-x-10 pl-5 pt-5 pb-5': 'flex justify-center p-5'">
-        <svg
-          width="30px"
-          height="30px"
-          stroke-width="1.5"
-          viewBox="0 0 24 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          color="#000000">
-          <path
-            d="M12 7V9"
-            stroke="#000000"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"></path>
-          <path
-            d="M12 13.01L12.01 12.9989"
-            stroke="#000000"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"></path>
-          <path
-            d="M3 20.2895V5C3 3.89543 3.89543 3 5 3H19C20.1046 3 21 3.89543 21 5V15C21 16.1046 20.1046 17 19 17H7.96125C7.35368 17 6.77906 17.2762 6.39951 17.7506L4.06852 20.6643C3.71421 21.1072 3 20.8567 3 20.2895Z"
-            stroke="#000000"
-            stroke-width="1.5"></path>
-        </svg>
+        <span class="material-symbols-outlined mat-icon-30">help</span>
         <span class="text-xl" [hidden]="!isOpen">Info</span>
       </a>
     </div>

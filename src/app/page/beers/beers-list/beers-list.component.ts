@@ -10,7 +10,7 @@ import {
 import { BeersApiService } from '../../../core/services/api/beers-api.service';
 import { BeerCollection } from '../../../core/models/interfaces/beer';
 import { LayoutComponent } from '../../../shared/ui/layout/layout.component';
-import { Observable, catchError } from 'rxjs';
+import { Observable, catchError, filter, map } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
 import { CardComponent } from '../../../shared/ui/card/card.component';
 import { InputSearchComponent } from '../../../shared/ui/input-search/input-search.component';
@@ -52,8 +52,8 @@ export class BeersListComponent implements OnInit {
     return this.cardTemplate;
   }
 
-  searchBeersByFood(food: string): void {
-    this.beers$ = this.beersApiService.findByFood(food).pipe(
+  searchBeersByName(name: string): void {
+    this.beers$ = this.beersApiService.findByName({ name }).pipe(
       catchError((error) => {
         console.error('Error fetching beers', error);
         return [];
@@ -63,6 +63,8 @@ export class BeersListComponent implements OnInit {
 
   ngOnInit(): void {
     this.beers$ = this.beersApiService.findAll().pipe(
+      filter((beers) => beers.data.length > 0),
+      map((beers) => beers.data),
       catchError((error) => {
         console.error('Error fetching beers', error);
         return [];
@@ -76,24 +78,28 @@ export class BeersListComponent implements OnInit {
    */
   handleSearchChange(food: string): void {
     if (!food) {
-      this.beers$ = this.beersApiService.findAll();
+      this.beers$ = this.beersApiService.findAll().pipe(
+        map((beers) => beers.data),
+        catchError((error) => {
+          console.error('Error fetching beers', error);
+          return [];
+        })
+      );
       return;
     }
-    this.searchBeersByFood(food);
+    this.searchBeersByName(food);
   }
 
   @HostListener('document:scroll', ['$event'])
   public onViewportScroll(event: Event): void {
-    console.log(event);
-    console.log(window.scrollY);
-    console.log(window.innerHeight);
-    console.log(self.innerHeight);
-    // will log the height of the frame viewport within the frameset
-
-    console.log(parent.innerHeight);
-    console.log(window.outerHeight);
+    // console.log(event);
+    // console.log(window.scrollY);
+    // console.log(window.innerHeight);
+    // console.log(self.innerHeight);
+    // // will log the height of the frame viewport within the frameset
+    // console.log(parent.innerHeight);
+    // console.log(window.outerHeight);
     // will log the height of the viewport of the closest frameset
-
     // this.isHidden = true;
     //TODO to implements: scroll up appears, down disappears
   }
