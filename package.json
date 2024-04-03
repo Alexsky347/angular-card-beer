@@ -9,7 +9,7 @@
     "test": "ng test",
     "lint": "npx eslint src  --fix --cache --cache-strategy content",
     "lint:ox": "npx oxlint --config .oxlint.json",
-    "format": "npx prettier src --write"
+    "format": "npx prettier src --write --end-of-line lf"
   },
   "private": true,
   "dependencies": {
