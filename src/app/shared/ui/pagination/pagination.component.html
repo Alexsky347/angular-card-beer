@@ -1,61 +1,36 @@
-<nav
-  class="flex items-center flex-column flex-wrap md:flex-row justify-between pt-4"
-  aria-label="Table navigation">
-  <span
-    class="text-sm font-normal text-gray-500 dark:text-gray-400 mb-4 md:mb-0 block w-full md:inline md:w-auto"
-    >Showing
-    <span class="font-semibold text-gray-900 dark:text-white">1-10</span> of
-    <span class="font-semibold text-gray-900 dark:text-white">1000</span></span
-  >
-  <ul class="inline-flex -space-x-px rtl:space-x-reverse text-sm h-8">
-    <li>
-      <button
-        class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
-        Previous
-      </button>
-    </li>
-    <li>
-      <button
-        href="#"
-        class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
-        1
-      </button>
-    </li>
-    <li>
-      <button
-        href="#"
-        class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
-        2
-      </button>
-    </li>
-    <li>
-      <button
-        href="#"
-        aria-current="page"
-        class="flex items-center justify-center px-3 h-8 text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white">
-        3
-      </button>
-    </li>
-    <li>
-      <button
-        href="#"
-        class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
-        4
-      </button>
-    </li>
-    <li>
-      <button
-        href="#"
-        class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
-        5
-      </button>
-    </li>
-    <li>
-      <button
-        href="#"
-        class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
-        Next
-      </button>
-    </li>
-  </ul>
-</nav>
+<div class="bg-white p-4 flex items-center flex-wrap justify-center">
+  <nav aria-label="Page navigation">
+    <ul class="inline-flex">
+      <li>
+        <button
+          (click)="pageChange.emit(next()- 2)"
+          [disabled]="!(prev() > 0)"
+          [className]="prev() > 0 ? 'px-4 py-2 text-grayDark transition-colors
+          duration-150 bg-white border border-r-0 border-grayDark rounded-l-lg
+          focus:shadow-outline hover:bg-grayLight': 'px-4 py-2 text-grayDark
+          transition-colors duration-150 bg-white border border-r-0
+          border-grayDark rounded-l-lg focus:shadow-outline hover:bg-grayLight
+          cursor-not-allowed'">
+          Prev
+        </button>
+      </li>
+      @for (page of pages(); track $index){
+      <li>
+        <button
+          (click)="pageChange.emit(page + 1)"
+          [className]="next() && next() - 1 === page + 1 ? 'px-4 py-2 text-white transition-colors duration-150 bg-grayDark border border-r-0 border-grayDark focus:shadow-outline hover:bg-grayLight': 'px-4 py-2 text-grayDark transition-colors duration-150 bg-white border border-r-0 border-grayDark focus:shadow-outline hover:bg-grayLight'">
+          {{ page + 1 }}
+        </button>
+      </li>
+      }
+      <li>
+        <button
+          (click)="pageChange.emit(next())"
+          [disabled]="!(next())"
+          [className]="next()? 'px-4 py-2 text-grayDark transition-colors duration-150 bg-white border border-grayDark rounded-r-lg focus:shadow-outline hover:bg-grayLight': 'px-4 py-2 text-grayDark transition-colors duration-150 bg-white border border-grayDark rounded-r-lg focus:shadow-outline hover:bg-grayLight cursor-not-allowed'">
+          Next
+        </button>
+      </li>
+    </ul>
+  </nav>
+</div>

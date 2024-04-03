@@ -5,18 +5,8 @@ directive -> ok
 
 ng-template ngTemplateOutlet (progress bar) -> ok
 
-animation sidenav
-
 @HostBinding()
 css (par exemple champ requis)
-
-remove detection OnPush
-
-rxjs operators
-
-loading screen
-
-css list
 
 
 schematics

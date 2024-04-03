@@ -8,9 +8,12 @@ import {
   HostListener
 } from '@angular/core';
 import { BeersApiService } from '../../../core/services/api/beers-api.service';
-import { BeerCollection } from '../../../core/models/interfaces/beer';
+import {
+  BeerCollection,
+  DataFromApi
+} from '../../../core/models/interfaces/beer';
 import { LayoutComponent } from '../../../shared/ui/layout/layout.component';
-import { Observable, catchError, filter, map } from 'rxjs';
+import { Observable, catchError, filter, map, tap } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
 import { CardComponent } from '../../../shared/ui/card/card.component';
 import { InputSearchComponent } from '../../../shared/ui/input-search/input-search.component';
@@ -41,6 +44,9 @@ export class BeersListComponent implements OnInit {
   beers$!: Observable<BeerCollection>;
   isHidden = false;
 
+  totalPages: Array<number> = [];
+  nextPage = 0;
+  prevPage = 0;
   mode = 'card';
   modeOptions = [{ mode: 'card' }, { mode: 'list' }];
 
@@ -61,15 +67,27 @@ export class BeersListComponent implements OnInit {
     );
   }
 
-  ngOnInit(): void {
-    this.beers$ = this.beersApiService.findAll().pipe(
-      filter((beers) => beers.data.length > 0),
-      map((beers) => beers.data),
+  private processBeerResponse(page?: number): void {
+    this.beers$ = this.beersApiService.findAll(page).pipe(
       catchError((error) => {
         console.error('Error fetching beers', error);
         return [];
-      })
+      }),
+      filter((beers) => beers.data.length > 0),
+      tap(({ pages, next, prev }) => {
+        if (pages)
+          this.totalPages = Array(pages)
+            .fill(0)
+            .map((x, i) => i);
+        this.nextPage = next;
+        this.prevPage = prev;
+      }),
+      map((beers) => beers.data)
     );
+  }
+
+  ngOnInit(): void {
+    this.processBeerResponse();
   }
 
   /**
@@ -102,5 +120,9 @@ export class BeersListComponent implements OnInit {
     // will log the height of the viewport of the closest frameset
     // this.isHidden = true;
     //TODO to implements: scroll up appears, down disappears
+  }
+
+  handlePageChange(page: number): void {
+    this.processBeerResponse(page);
   }
 }

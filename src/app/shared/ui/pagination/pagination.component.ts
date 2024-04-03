@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, output } from '@angular/core';
 import { input } from '@angular/core';
 
 @Component({
@@ -9,5 +9,9 @@ import { input } from '@angular/core';
   styleUrl: './pagination.component.scss'
 })
 export class PaginationComponent {
-  // currentPage = input.required<number>();
+  next = input.required<number>();
+  prev = input.required<number>();
+  pages = input.required<Array<number>>();
+
+  pageChange = output<number>();
 }

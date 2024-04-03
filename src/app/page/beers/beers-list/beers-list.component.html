@@ -35,4 +35,6 @@
   </ng-template>
 
   <app-item-view [itemTemplate]="template" [items]="beers$ | async" />
+  <app-pagination [pages]="totalPages" [next]="nextPage" [prev]="prevPage"
+  (pageChange)="handlePageChange($event)"/>
 </div>

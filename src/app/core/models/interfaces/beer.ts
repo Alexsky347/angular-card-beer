@@ -3,6 +3,7 @@ export type DataFromApi = {
   items: number;
   last: number;
   next: number;
+  prev: number;
   pages: number;
   data: Array<Beer>;
 };
