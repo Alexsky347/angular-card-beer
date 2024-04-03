@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Meta } from '@angular/platform-browser';
 import { HeaderComponent } from './shared/ui/header/header.component';
@@ -64,7 +64,7 @@ export class AppComponent {
   }
 
   @HostListener('window:scroll', ['$event'])
-  onWindowScroll() {
+  onWindowScroll(): void {
     const currentScrollPos = window.scrollY;
     if (currentScrollPos < this.prevScrollPos) {
       this.isHeaderStatic = true; // Show header

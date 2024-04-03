@@ -1,6 +1,7 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { output } from '@angular/core';
 
 @Component({
   selector: 'app-input-search',
@@ -12,7 +13,7 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 })
 export class InputSearchComponent implements OnInit {
   search = new FormControl('', { nonNullable: true });
-  @Output() searchChange: EventEmitter<string> = new EventEmitter<string>();
+  searchChange = output<string>();
 
   ngOnInit(): void {
     this.search.valueChanges

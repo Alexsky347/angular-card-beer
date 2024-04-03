@@ -1,4 +1,4 @@
 <ng-container
-  [ngTemplateOutlet]="itemTemplate"
-  [ngTemplateOutletContext]="{$implicit:items}">
+  [ngTemplateOutlet]="itemTemplate()"
+  [ngTemplateOutletContext]="generateContext()">
 </ng-container>

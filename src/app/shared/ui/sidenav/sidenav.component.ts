@@ -1,14 +1,15 @@
 import {
   animate,
-  keyframes,
   state,
   style,
   transition,
   trigger
 } from '@angular/animations';
 import { NgStyle } from '@angular/common';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { input } from '@angular/core';
+import { output } from '@angular/core';
 
 @Component({
   selector: 'app-sidenav',
@@ -62,6 +63,6 @@ import { RouterModule } from '@angular/router';
   ]
 })
 export class SidenavComponent {
-  @Input({ required: true }) isOpen!: boolean;
-  @Output() toggleCloseBtn = new EventEmitter<boolean>();
+  isOpen = input.required<boolean>();
+  toggleCloseBtn = output<boolean>();
 }

@@ -1,8 +1,8 @@
 <nav
-  [@headerAnimation]="isStatic"
+  [@headerAnimation]="isStatic()"
   class="top-0 w-full bg-surface dark:bg-darkSurface shadow-lg h-20 border-b border-gray-200 z-50">
   <div class="p-6">
-    <button (click)="toggleSidenav.emit(!isOpen)">
+    <button (click)="toggleSidenav.emit(!isOpen())">
       <span class="material-symbols-outlined mat-icon-30">menu</span>
     </button>
     <div class="flex items-center justify-between"></div>

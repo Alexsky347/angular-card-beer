@@ -1,12 +1,12 @@
 <nav
   class="bg-surface dark:bg-darkSurface h-full top-0 left-0 fixed shadow-xl z-50"
-  [@widthGrow]="isOpen">
+  [@widthGrow]="isOpen()">
   <div class="flex flex-col">
     <div class="divide-y">
       <div class="h-20 shadow-lg">
         <button
-          [@closeBtn]="isOpen"
-          (click)="toggleCloseBtn.emit(!isOpen)"
+          [@closeBtn]="isOpen()"
+          (click)="toggleCloseBtn.emit(!isOpen())"
           class="sidenav-burger absolute top-[25px] right-[25px]">
           <span class="material-symbols-outlined mat-icon-30 text-red-400">
             close
@@ -15,35 +15,35 @@
       </div>
       <a
         [routerLink]="['/home']"
-        [className]="isOpen ? 'flex space-x-10 pl-5 pt-5 pb-5': 'flex justify-center p-5'">
+        [className]="isOpen() ? 'flex space-x-10 pl-5 pt-5 pb-5': 'flex justify-center p-5'">
         <span class="material-symbols-outlined mat-icon-30"> home </span>
-        <span class="text-xl" [hidden]="!isOpen">Home</span>
+        <span class="text-xl" [hidden]="!isOpen()">Home</span>
       </a>
     </div>
     <a
       href=""
-      [className]="isOpen ? 'flex space-x-10 pl-5 pt-5 pb-5': 'flex justify-center p-5'">
+      [className]="isOpen() ? 'flex space-x-10 pl-5 pt-5 pb-5': 'flex justify-center p-5'">
       <span class="material-symbols-outlined mat-icon-30"> sports_bar </span>
-      <span class="text-xl" [hidden]="!isOpen">Beers</span>
+      <span class="text-xl" [hidden]="!isOpen()">Beers</span>
     </a>
     <a
       href=""
-      [className]="isOpen ? 'flex space-x-10 pl-5 pt-5 pb-5': 'flex justify-center p-5'">
+      [className]="isOpen() ? 'flex space-x-10 pl-5 pt-5 pb-5': 'flex justify-center p-5'">
       <span class="material-symbols-outlined mat-icon-30">info</span>
-      <span class="text-xl" [hidden]="!isOpen">Info</span>
+      <span class="text-xl" [hidden]="!isOpen()">Info</span>
     </a>
     <div class="absolute bottom-5">
       <a
         href=""
-        [className]="isOpen ? 'flex space-x-10 pl-5 pt-5 pb-5': 'flex justify-center p-5'">
+        [className]="isOpen() ? 'flex space-x-10 pl-5 pt-5 pb-5': 'flex justify-center p-5'">
         <span class="material-symbols-outlined mat-icon-30">info</span>
-        <span class="text-xl" [hidden]="!isOpen">Info</span>
+        <span class="text-xl" [hidden]="!isOpen()">Info</span>
       </a>
       <a
         href=""
-        [className]="isOpen ? 'flex space-x-10 pl-5 pt-5 pb-5': 'flex justify-center p-5'">
+        [className]="isOpen() ? 'flex space-x-10 pl-5 pt-5 pb-5': 'flex justify-center p-5'">
         <span class="material-symbols-outlined mat-icon-30">help</span>
-        <span class="text-xl" [hidden]="!isOpen">Info</span>
+        <span class="text-xl" [hidden]="!isOpen()">Info</span>
       </a>
     </div>
   </div>

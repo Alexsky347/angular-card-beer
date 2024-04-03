@@ -6,6 +6,8 @@ import {
   animate
 } from '@angular/animations';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { input } from '@angular/core';
+import { output } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -33,7 +35,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   ]
 })
 export class HeaderComponent {
-  @Input({ required: true }) isOpen!: boolean;
-  @Input({ required: true }) isStatic!: boolean;
-  @Output() toggleSidenav = new EventEmitter<boolean>();
+  isOpen = input.required<boolean>();
+  isStatic = input.required<boolean>();
+  toggleSidenav = output<boolean>();
 }

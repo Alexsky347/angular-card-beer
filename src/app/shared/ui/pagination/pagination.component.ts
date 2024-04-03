@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { input } from '@angular/core';
 
 @Component({
   selector: 'app-pagination',
@@ -8,5 +9,5 @@ import { Component } from '@angular/core';
   styleUrl: './pagination.component.scss'
 })
 export class PaginationComponent {
-  // @Input({ required: true }) currentPage!: number;
+  // currentPage = input.required<number>();
 }

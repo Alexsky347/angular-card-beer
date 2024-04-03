@@ -1,6 +1,7 @@
 import { Component, Input, TemplateRef } from '@angular/core';
 import { BeerCollection } from '../../../core/models/interfaces/beer';
 import { NgTemplateOutlet } from '@angular/common';
+import { input } from '@angular/core';
 
 @Component({
   selector: 'app-item-view',
@@ -10,6 +11,12 @@ import { NgTemplateOutlet } from '@angular/common';
   styleUrl: './item-view.component.scss'
 })
 export class ItemViewComponent {
-  @Input() items!: BeerCollection | null;
-  @Input() itemTemplate!: TemplateRef<any>;
+  items = input.required<BeerCollection | null>();
+  itemTemplate = input.required<TemplateRef<HTMLElement>>();
+
+  generateContext(): any {
+    return {
+      $implicit: this.items()
+    };
+  }
 }

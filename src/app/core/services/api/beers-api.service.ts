@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable, inject } from '@angular/core';
-import { Observable, filter, map, tap } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import {
   Beer,
   BeerCollection,

@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Beer, BeerCollection } from '../../../core/models/interfaces/beer';
 import { GetBeerPropertyPipe } from '../../pipe/get-beer-property.pipe';
 import { NgOptimizedImage } from '@angular/common';
+import { input } from '@angular/core';
 
 @Component({
   selector: 'app-list',
@@ -11,13 +12,13 @@ import { NgOptimizedImage } from '@angular/common';
   styleUrl: './list.component.scss'
 })
 export class ListComponent implements OnInit {
-  @Input() items!: BeerCollection;
+  items = input<BeerCollection>([]);
 
   headers!: Array<keyof Beer>;
 
   ngOnInit(): void {
-    if (this.items && this.items.length > 0) {
-      this.headers = Object.keys(this.items[0]) as Array<keyof Beer>;
+    if (this.items()) {
+      this.headers = Object.keys(this.items()[0]) as Array<keyof Beer>;
     }
   }
 }
