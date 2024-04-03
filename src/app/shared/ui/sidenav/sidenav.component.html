@@ -7,8 +7,10 @@
         <button
           [@closeBtn]="isOpen"
           (click)="toggleCloseBtn.emit(!isOpen)"
-          class="absolute top-[25px] right-[25px]">
-          <span class="material-symbols-outlined mat-icon-30"> close </span>
+          class="sidenav-burger absolute top-[25px] right-[25px]">
+          <span class="material-symbols-outlined mat-icon-30 text-red-400">
+            close
+          </span>
         </button>
       </div>
       <a

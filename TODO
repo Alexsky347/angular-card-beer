@@ -18,3 +18,9 @@ loading screen
 
 css list
 
+
+schematics
+ng generate @angular/core:control-flow
+ng generate @angular/core:standalone
+ng g ngxtension:convert-signal-inputs
+ng g ngxtension:convert-outputs

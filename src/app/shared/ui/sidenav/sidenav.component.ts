@@ -15,7 +15,19 @@ import { RouterModule } from '@angular/router';
   standalone: true,
   imports: [RouterModule, NgStyle],
   templateUrl: './sidenav.component.html',
-  styles: '',
+  styles: `
+    .sidenav-burger {
+      transition: transform 1.5s ease-in-out;
+    }
+
+    .sidenav-burger[isOpen='false'] {
+      transform: rotate(0deg);
+    }
+
+    .sidenav-burger[isOpen='true'] {
+      transform: rotate(90deg);
+    }
+  `,
   animations: [
     trigger('widthGrow', [
       state(
@@ -45,21 +57,7 @@ import { RouterModule } from '@angular/router';
           transform: 'rotate(90deg)'
         })
       ),
-      transition('false <=> true', animate(250)),
-      transition(
-        'true => true',
-        animate(
-          250,
-          keyframes([
-            style({ transform: 'rotate(135deg)' }),
-            style({ transform: 'rotate(180deg)' }),
-            style({ transform: 'rotate(225deg)' }),
-            style({ transform: 'rotate(270deg)' }),
-            style({ transform: 'rotate(315deg)' }),
-            style({ transform: 'rotate(360deg)' })
-          ])
-        )
-      )
+      transition('false <=> true', animate('1500ms ease-in-out'))
     ])
   ]
 })
